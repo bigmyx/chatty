@@ -1,9 +1,24 @@
 require 'sinatra/base'
 
-module ChatDemo
+module Chat
   class App < Sinatra::Base
     get "/" do
-      erb :"index.html"
+      if session[:email] 
+        erb :"index.html"
+      else
+        redirect '/auth/admin'
+      end
+    end
+
+    post '/auth/admin/callback' do
+      auth_details = request.env['omniauth.auth']
+      session[:email] = auth_details.info['email']
+      redirect '/'
+    end
+
+    get '/auth/failure' do
+      params[:message]
+      # landing page
     end
 
     get "/assets/js/application.js" do

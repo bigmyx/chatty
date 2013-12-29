@@ -1,7 +1,7 @@
 # middlewares/chat_backend.rb
 require 'faye/websocket'
 
-module ChatDemo
+module Chat
   class ChatBackend
     KEEPALIVE_TIME = 15 # in seconds
 
