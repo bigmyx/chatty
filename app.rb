@@ -13,6 +13,8 @@ module Chat
     post '/auth/admin/callback' do
       auth_details = request.env['omniauth.auth']
       session[:email] = auth_details.info['email']
+      session[:name] = auth_details.info['first_name']
+      p auth_details
       redirect '/'
     end
 

@@ -5,7 +5,7 @@ require 'openid'
 require 'openid/store/filesystem'
 require 'gapps_openid'
 
-use Rack::Session::Cookie, :secret => 'banbga342'
+use Rack::Session::Cookie
 
 use OmniAuth::Builder do
   provider :open_id,  :name => 'admin',
